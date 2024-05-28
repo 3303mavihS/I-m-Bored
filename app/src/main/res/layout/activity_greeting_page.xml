@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".GreetingPage">
+
+    <TextView
+        android:id="@+id/bored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="@dimen/app_leftRight_padding"
+        android:layout_marginLeft="@dimen/app_leftRight_padding"
+        android:textColor="@color/textPrimary"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:text="You bored..."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/bored"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="@dimen/app_leftRight_padding"
+        android:layout_marginLeft="@dimen/app_leftRight_padding"
+        android:textColor="@color/textSecondary"
+        android:text="We might've something to help you with!"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:id="@+id/nameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/bored"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/edit_border_radius"
+        android:textColorHint="@color/textSecondary"
+        android:textSize="16sp"
+        android:hint="Tell Us Your Name Then..."
+        android:maxLines="1"
+        android:maxLength="20"
+        android:paddingRight="24dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginRight="@dimen/app_leftRight_padding"
+        android:layout_marginLeft="@dimen/app_leftRight_padding"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/nameSaveBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="@dimen/app_leftRight_padding"
+        android:layout_marginLeft="@dimen/app_leftRight_padding"
+        android:background="@drawable/btn_border_radius"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:text="Next"
+        android:textAllCaps="true"
+        android:textColor="@color/textPrimary"
+        android:paddingRight="48dp"
+        android:paddingLeft="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/app_leftRight_padding"
+        android:layout_marginBottom="@dimen/app_leftRight_padding"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
