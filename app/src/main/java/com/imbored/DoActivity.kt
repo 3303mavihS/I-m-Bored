@@ -52,42 +52,41 @@ class DoActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         binding.avatar.setImageResource(avatar)
 
         init()
-        var responseActivity =""
-        bridgeModel.activityLiveDataFromAPI.observe(this){
-            Log.i("ResponseFromAPIBored",it.toString())
-            binding.yourActivity.text = it.activity
-            responseActivity = it.activity
-            if (responseActivity=="")
-
-
-            if (it.link=="")
-                binding.activityLink.text = ""
-            else
-                binding.activityLink.text = "Link : " + it.link
-        }
-
 
         var start = true
         binding.nextBtn.setOnClickListener{
-            if(checkInternetConnectivity()) {
+            if(!start){
+                binding.nextBtn.text = "Next"
                 bridgeModel.getActivityFromAPI()
+            }
+
+            if(checkInternetConnectivity()) {
                 binding.saveBtn.visibility = View.VISIBLE
-                start = false
+                start = true
             }
             else {
                 binding.yourActivity.text = "Check Internet Connectivity."
                 binding.nextBtn.text = "Check"
-                start = false
+                start = true
             }
 
-            if (responseActivity=="") {
-                binding.yourActivity.text = "There seems some problem with the server."
-                binding.saveBtn.visibility = View.INVISIBLE
+            bridgeModel.activityLiveDataFromAPI.observe(this){
+                Log.i("ResponseFromAPIBored",it.toString())
+                binding.yourActivity.text = it.activity
+                binding.saveBtn.visibility = View.VISIBLE
+                if (it.link=="")
+                    binding.activityLink.text = ""
+                else
+                    binding.activityLink.text = "Link : " + it.link
+
+                if (it.toString()=="") {
+                    binding.yourActivity.text = "There seems some problem with the server."
+                    binding.saveBtn.visibility = View.INVISIBLE
+                }
             }
 
-            if(!start){
-                binding.nextBtn.text = "Next"
-            }
+            start = false
+            binding.nextBtn.text = "Next"
         }
 
         binding.saveBtn.setOnClickListener {
@@ -130,6 +129,7 @@ class DoActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         repo = ResponseRepo(ConnectionRetrofitBuilder.getInstance(),projectActivityDatabase.getDatabaseDao())
         bridgeModelFactory = BridgeModelFactory(repo)
         bridgeModel = ViewModelProvider(this,bridgeModelFactory)[BridgeModel::class.java]
+        bridgeModel.getActivityFromAPI()
     }
 
     private fun checkInternetConnectivity(): Boolean {

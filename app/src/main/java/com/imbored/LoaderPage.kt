@@ -23,7 +23,7 @@ class LoaderPage : AppCompatActivity() {
         //Move to Next Page After waiting for 2 seconds
         val handler = Handler()
         handler.postDelayed(Runnable {
-            val greetingPage: Intent = Intent(this, GreetingPage::class.java)
+            val greetingPage = Intent(this, GreetingPage::class.java)
             this.startActivity(greetingPage)
             this.finish()
         }, 2000)

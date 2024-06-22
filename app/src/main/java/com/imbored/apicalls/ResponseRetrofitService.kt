@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface ResponseRetrofitService {
 
-    @GET("activity")
+    @GET("random")
     suspend fun getTheActivity() : Response<YourActivity>
 
 }

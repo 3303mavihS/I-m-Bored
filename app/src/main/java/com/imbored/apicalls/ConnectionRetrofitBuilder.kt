@@ -10,7 +10,7 @@ class ConnectionRetrofitBuilder {
         fun getInstance() : ResponseRetrofitService {
             if(responseRetrofitService == null){
                 responseRetrofitService = Retrofit.Builder()
-                    .baseUrl("http://www.boredapi.com/api/")
+                    .baseUrl("https://bored-api.appbrewery.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(ResponseRetrofitService::class.java)
