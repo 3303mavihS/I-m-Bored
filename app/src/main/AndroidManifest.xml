@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ImBored"
-        android:usesCleartextTraffic="true"
+        android:usesCleartextTraffic="false"
         tools:targetApi="31">
         <activity
             android:name=".ProfileSetting"
@@ -38,7 +38,7 @@
             android:noHistory="true" />
         <activity
             android:name=".DoActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Recent"
             android:exported="false" />
